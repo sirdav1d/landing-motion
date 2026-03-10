@@ -24,6 +24,9 @@ type SocialProofSectionProps = {
 	heroVideoObjectPosition?: string;
 };
 
+const DOCKED_VIDEO_WIDTH_PX = 188;
+const DOCKED_VIDEO_HEIGHT_PX = 168;
+
 function isImageItem(item: SocialProofItem): item is SocialProofImageItem {
 	return item.kind === 'image';
 }
@@ -93,18 +96,32 @@ export function SocialProofSection({
 					<div className='pointer-events-none absolute inset-0 z-10'>
 						<div
 							ref={dockTargetRef}
-							className='absolute left-1/2 top-[72%] h-[34vh] w-[min(560px,66vw)] -translate-x-1/2 -translate-y-1/2'
+							className='absolute left-1/2 top-[72%] -translate-x-1/2 -translate-y-1/2'
+							style={{
+								width: `${DOCKED_VIDEO_WIDTH_PX}px`,
+								height: `${DOCKED_VIDEO_HEIGHT_PX}px`,
+							}}
 						/>
 
-						<AnimatePresence initial={false}>
+						<AnimatePresence
+							initial={false}
+							mode='sync'>
 							{isVideoDocked && heroVideoSrc ? (
 								<motion.div
 									key='section-two-shared-video'
 									layoutId={sharedVideoLayoutId}
+									layoutCrossfade={false}
+									initial={{ opacity: 1 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 1 }}
 									transition={{
 										layout: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
 									}}
-									className='absolute left-1/2 top-[90%] z-10 aspect-16/10 w-[min(400px,66vw)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-4xl border border-white/16 bg-[#0b1b1c] shadow-[0_24px_70px_rgba(0,0,0,0.42)]'>
+									className='absolute left-1/2 top-[90%] z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl'
+									style={{
+										width: `${DOCKED_VIDEO_WIDTH_PX}px`,
+										height: `${DOCKED_VIDEO_HEIGHT_PX}px`,
+									}}>
 									<video
 										className='h-full w-full object-cover'
 										style={{ objectPosition: heroVideoObjectPosition }}
@@ -119,23 +136,6 @@ export function SocialProofSection({
 											type='video/mp4'
 										/>
 									</video>
-									<motion.div
-										animate={
-											shouldReduceMotion
-												? undefined
-												: { opacity: [0.34, 0.25, 0.34] }
-										}
-										transition={
-											shouldReduceMotion
-												? undefined
-												: {
-														duration: 2.2,
-														repeat: Number.POSITIVE_INFINITY,
-														ease: 'easeInOut',
-													}
-										}
-										className='absolute inset-0 bg-[linear-gradient(120deg,rgba(6,16,17,0.44),rgba(6,16,17,0.2),rgba(6,16,17,0.44))]'
-									/>
 								</motion.div>
 							) : null}
 						</AnimatePresence>

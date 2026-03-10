@@ -125,27 +125,12 @@ function HeroCtas({
 	);
 }
 
-function HeroProofPoints({ proofPoints }: { proofPoints: string[] }) {
-	return (
-		<ul className='mt-8 grid grid-cols-1 gap-3 text-sm font-semibold tracking-wide text-[#f1e8d5] sm:grid-cols-3'>
-			{proofPoints.map((point) => (
-				<li
-					key={point}
-					className='rounded-full border border-white/20 bg-[#0e2122]/84 px-4 py-2 text-center'>
-					{point}
-				</li>
-			))}
-		</ul>
-	);
-}
-
 function HeroCopy({
 	headlineStart,
 	headlineEnd,
 	activeWord,
 	primaryCta,
 	secondaryCta,
-	proofPoints,
 	withMotion,
 	revealInitial,
 }: HeroCopyProps) {
@@ -163,7 +148,6 @@ function HeroCopy({
 					primaryCta={primaryCta}
 					secondaryCta={secondaryCta}
 				/>
-				<HeroProofPoints proofPoints={proofPoints} />
 			</>
 		);
 	}
@@ -202,7 +186,6 @@ export function HeroSection({
 	description,
 	primaryCta,
 	secondaryCta,
-	backgroundVideoSrc,
 	bottomVideoSrc,
 	bottomPosterSrc,
 	proofPoints = [...DEFAULT_PROOF_POINTS],
@@ -234,8 +217,8 @@ export function HeroSection({
 		scrollYProgress,
 		[0, 0.16, 0.3, EXPAND_PHASE_END, 1],
 		[
-			'inset(68% 3.5% 6% 3.5% round 34px)',
-			'inset(56% 3.5% 5.8% 3.5% round 32px)',
+			'inset(58% 3.5% 6% 3.5% round 34px)',
+			'inset(40% 3.5% 5.8% 3.5% round 32px)',
 			'inset(30% 2.8% 4.2% 2.8% round 24px)',
 			'inset(0% 0% 0% 0% round 0px)',
 			'inset(0% 0% 0% 0% round 0px)',
@@ -251,11 +234,6 @@ export function HeroSection({
 		[0, EXPAND_PHASE_END, 0.82, 1],
 		[1, 1, 1.015, 1.02],
 	);
-	const mediaShadeOpacity = useTransform(
-		scrollYProgress,
-		[0, EXPAND_PHASE_END, CONTENT_MOVE_START, 1],
-		[0.54, 0.22, 0.34, 0.5],
-	);
 
 	if (shouldReduceMotion) {
 		return (
@@ -263,22 +241,6 @@ export function HeroSection({
 				id='hero'
 				ref={sectionRef}
 				className='relative overflow-hidden pb-14 pt-34 text-foreground md:pt-38'>
-				<div className='pointer-events-none absolute inset-0'>
-					<video
-						className='h-full w-full object-cover opacity-0'
-						autoPlay
-						loop
-						muted
-						playsInline
-						preload='metadata'>
-						<source
-							src={backgroundVideoSrc}
-							type='video/mp4'
-						/>
-					</video>
-					<div className='absolute inset-0 bg-[linear-gradient(112deg,rgba(7,17,18,0.84),rgba(11,31,29,0.82))]' />
-				</div>
-
 				<div className='relative mx-auto max-w-[1320px] px-5 md:px-8 lg:px-10'>
 					<div className='max-w-[790px]'>
 						<HeroCopy
@@ -294,7 +256,7 @@ export function HeroSection({
 						/>
 					</div>
 
-					<div className='mt-12 overflow-hidden rounded-4xl border border-white/18 bg-[#0b1b1c] shadow-[0_26px_70px_rgba(0,0,0,0.38)]'>
+					<div className='mt-12 overflow-hidden rounded-4xl'>
 						<div className='relative aspect-19/10 w-full'>
 							<video
 								className='h-full w-full object-cover'
@@ -329,6 +291,10 @@ export function HeroSection({
 							<motion.div
 								key='hero-shared-video'
 								layoutId={sharedVideoLayoutId}
+								layoutCrossfade={false}
+								initial={{ opacity: 1 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 1 }}
 								transition={{ layout: { duration: 0.95, ease: SMOOTH_EASE } }}
 								style={{
 									clipPath: mediaClipPath,
@@ -350,11 +316,6 @@ export function HeroSection({
 										type='video/mp4'
 									/>
 								</video>
-								<motion.div
-									style={{ opacity: mediaShadeOpacity }}
-									className='absolute inset-0 bg-[linear-gradient(118deg,rgba(7,18,18,0.62),rgba(7,18,18,0.18)_42%,rgba(7,18,18,0.52))]'
-								/>
-								<div className='absolute inset-0 border border-white/14' />
 							</motion.div>
 						) : null}
 					</AnimatePresence>

@@ -22,7 +22,10 @@ function getCompactStartY() {
 
 	const sectionStart =
 		socialProofSection.getBoundingClientRect().top + window.scrollY;
-	return Math.max(sectionStart - window.innerHeight + HEADER_COMPACT_OFFSET_PX, 0);
+	return Math.max(
+		sectionStart - window.innerHeight + HEADER_COMPACT_OFFSET_PX,
+		0,
+	);
 }
 
 export function SiteHeader() {
@@ -62,7 +65,7 @@ export function SiteHeader() {
 		<header className='pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6'>
 			<motion.div
 				layout
-				transition={{ duration: 0.54, ease: 'easeInOut' }}
+				transition={{ duration: 0.54, ease: 'linear' }}
 				className={[
 					'pointer-events-auto mx-auto flex items-center justify-between gap-4',
 					isCompact
