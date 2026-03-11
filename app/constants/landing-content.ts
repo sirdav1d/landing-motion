@@ -1,6 +1,6 @@
 /** @format */
 
-import type { HeroContent, SocialProofItem } from './landing-types';
+import type { HeroContent, SocialProofItem } from '../types/landing';
 
 export const heroContent: HeroContent = {
 	headlineStart: 'Mais do que acessórios.',
@@ -27,7 +27,7 @@ export const heroContent: HeroContent = {
 };
 
 export const socialProofHeadline =
-	'+180 mil marcas crescendo com a Atelier Lume';
+	'+180 mil clientes satisfeitos com a Atelier Lume';
 
 export const socialProofItems: SocialProofItem[] = [
 	{
@@ -83,11 +83,11 @@ export const socialProofItems: SocialProofItem[] = [
 		width: 178,
 		height: 185,
 		imageSrc:
-			'https://images.unsplash.com/photo-1623113562048-627016402138?auto=format&fit=crop&q=80&w=900',
-		imageAlt: 'Universitária com suéter azul e brincos dourados.',
+			'https://images.unsplash.com/photo-1699894717283-1866e3f976aa?auto=format&fit=crop&q=80&w=900',
+		imageAlt: 'Close em brinco brilhante com foco no acessório.',
 		secondaryImageSrc:
-			'https://images.unsplash.com/photo-1708133302351-8121a58e342c?auto=format&fit=crop&q=80&w=620',
-		secondaryImageAlt: 'Close de mão ajustando brinco.',
+			'https://images.unsplash.com/photo-1721206624521-3393ded42e11?auto=format&fit=crop&q=80&w=620',
+		secondaryImageAlt: 'Retrato jovem com colar e anéis em luz suave.',
 	},
 	{
 		id: 'left-middle-style',
@@ -97,11 +97,11 @@ export const socialProofItems: SocialProofItem[] = [
 		width: 170,
 		height: 170,
 		imageSrc:
-			'https://images.unsplash.com/photo-1663098007972-9cc732e72f8f?auto=format&fit=crop&q=80&w=900',
-		imageAlt: 'Jovem com vestido azul e colar dourado.',
+			'https://images.unsplash.com/photo-1697635418866-5d3f1ea9788c?auto=format&fit=crop&q=80&w=900',
+		imageAlt: 'Universitária em retrato fashion com brinco em destaque.',
 		secondaryImageSrc:
-			'https://images.unsplash.com/photo-1697635418866-5d3f1ea9788c?auto=format&fit=crop&q=80&w=620',
-		secondaryImageAlt: 'Retrato com maquiagem brilhante e brinco.',
+			'https://images.unsplash.com/photo-1556941975-8963a1f2a5a8?auto=format&fit=crop&q=80&w=620',
+		secondaryImageAlt: 'Close em brinco pendente com luz quente.',
 	},
 	{
 		id: 'right-middle-style',
@@ -112,10 +112,10 @@ export const socialProofItems: SocialProofItem[] = [
 		height: 170,
 		imageSrc:
 			'https://images.unsplash.com/photo-1708133302351-8121a58e342c?auto=format&fit=crop&q=80&w=900',
-		imageAlt: 'Detalhe de mão colocando brinco.',
+		imageAlt: 'Close de mão ajustando brinco dourado.',
 		secondaryImageSrc:
-			'https://images.unsplash.com/photo-1623113562048-627016402138?auto=format&fit=crop&q=80&w=620',
-		secondaryImageAlt: 'Retrato urbano com acessórios dourados.',
+			'https://images.unsplash.com/photo-1693987663069-87c923c25984?auto=format&fit=crop&q=80&w=620',
+		secondaryImageAlt: 'Retrato universitário em paleta azul.',
 	},
 	{
 		id: 'left-bottom-style',
@@ -125,11 +125,11 @@ export const socialProofItems: SocialProofItem[] = [
 		width: 188,
 		height: 168,
 		imageSrc:
-			'https://images.unsplash.com/photo-1755828564302-5c722f1c74a7?auto=format&fit=crop&q=80&w=900',
-		imageAlt: 'Retrato com argolas e lenço estiloso.',
+			'https://images.unsplash.com/photo-1721206624521-3393ded42e11?auto=format&fit=crop&q=80&w=900',
+		imageAlt: 'Retrato com colar e anéis em tons neutros.',
 		secondaryImageSrc:
-			'https://images.unsplash.com/photo-1663098007972-9cc732e72f8f?auto=format&fit=crop&q=80&w=620',
-		secondaryImageAlt: 'Look jovem em tons de azul.',
+			'https://images.unsplash.com/photo-1715374033196-0ff662284a7e?auto=format&fit=crop&q=80&w=620',
+		secondaryImageAlt: 'Processo artesanal de montagem de acessório.',
 	},
 	{
 		id: 'right-bottom-style',
@@ -139,10 +139,10 @@ export const socialProofItems: SocialProofItem[] = [
 		width: 188,
 		height: 168,
 		imageSrc:
-			'https://images.unsplash.com/photo-1697635418866-5d3f1ea9788c?auto=format&fit=crop&q=80&w=900',
-		imageAlt: 'Retrato fashion com brinco em tons azulados.',
+			'https://images.unsplash.com/photo-1556941975-8963a1f2a5a8?auto=format&fit=crop&q=80&w=900',
+		imageAlt: 'Close de universitária com brinco em destaque.',
 		secondaryImageSrc:
-			'https://images.unsplash.com/photo-1708133302351-8121a58e342c?auto=format&fit=crop&q=80&w=620',
-		secondaryImageAlt: 'Detalhe de acessório no campus.',
+			'https://images.unsplash.com/photo-1771447676899-594e3a8265d9?auto=format&fit=crop&q=80&w=620',
+		secondaryImageAlt: 'Pulso com acessórios em luz de fim de tarde.',
 	},
 ];

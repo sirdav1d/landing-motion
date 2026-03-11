@@ -2,9 +2,30 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
+const readabilityRules = {
+  complexity: ["warn", 15],
+  "max-lines-per-function": [
+    "warn",
+    { max: 120, skipBlankLines: true, skipComments: true },
+  ],
+  "no-nested-ternary": "warn",
+  "sort-imports": [
+    "warn",
+    {
+      allowSeparatedGroups: true,
+      ignoreCase: true,
+      ignoreDeclarationSort: true,
+      ignoreMemberSort: false,
+    },
+  ],
+};
+
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: readabilityRules,
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

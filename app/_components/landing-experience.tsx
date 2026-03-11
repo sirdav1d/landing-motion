@@ -4,7 +4,8 @@
 
 import { LayoutGroup } from 'motion/react';
 import { startTransition, useCallback, useState } from 'react';
-import type { HeroContent, SocialProofItem } from './landing-types';
+import { SHARED_VIDEO_LAYOUT_ID } from '../constants/landing';
+import type { HeroContent, SocialProofItem } from '../types/landing';
 
 import { HeroSection } from './hero-section';
 import { SocialProofSection } from './social-proof-section';
@@ -14,8 +15,6 @@ type LandingExperienceProps = {
 	socialProofHeadline: string;
 	socialProofItems: SocialProofItem[];
 };
-
-const SHARED_VIDEO_LAYOUT_ID = 'hero-shared-video-frame';
 
 export function LandingExperience({
 	heroContent,

@@ -4,15 +4,7 @@
 
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useCallback, useEffect, useState } from 'react';
-
-const navItems = [
-	{ label: 'Soluções', href: '#hero' },
-	{ label: 'Plataforma', href: '#hero' },
-	{ label: 'Preços', href: '#social-proof' },
-	{ label: 'Grandes marcas', href: '#social-proof' },
-];
-
-const HEADER_COMPACT_OFFSET_PX = 24;
+import { HEADER_COMPACT_OFFSET_PX, navItems } from '../constants/site-header';
 
 function getCompactStartY() {
 	const socialProofSection = document.getElementById('social-proof');

@@ -1,0 +1,26 @@
+/** @format */
+
+export const DOCKED_VIDEO_WIDTH_PX = 188;
+export const DOCKED_VIDEO_HEIGHT_PX = 168;
+
+export const SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_AMOUNT = 0.45;
+export const SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_MARGIN = '-8% 0px -22% 0px';
+
+export const SOCIAL_PROOF_HEADLINE_INITIAL_OFFSET_Y = 24;
+export const SOCIAL_PROOF_HEADLINE_VIEWPORT_AMOUNT = 0.45;
+export const SOCIAL_PROOF_HEADLINE_TRANSITION = {
+	duration: 0.64,
+	ease: [0.22, 1, 0.36, 1],
+} as const;
+
+export const SOCIAL_PROOF_DOCKED_VIDEO_LAYOUT_TRANSITION = {
+	layout: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+} as const;
+
+export const SOCIAL_PROOF_ITEM_VIEWPORT_AMOUNT = 0.2;
+export const SOCIAL_PROOF_ITEM_INITIAL_SCALE = 0.92;
+export const SOCIAL_PROOF_ITEM_INITIAL_OFFSET_Y = 20;
+export const SOCIAL_PROOF_ITEM_FLOAT_SEQUENCE = [0, -8, 0];
+export const SOCIAL_PROOF_ITEM_BASE_DURATION = 0.8;
+export const SOCIAL_PROOF_ITEM_DURATION_STEP = 0.25;
+export const SOCIAL_PROOF_ITEM_DELAY_STEP = 0.01;

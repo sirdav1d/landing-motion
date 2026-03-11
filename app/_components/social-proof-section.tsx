@@ -3,15 +3,21 @@
 'use client';
 
 import Image from 'next/image';
-import {
-	AnimatePresence,
-	motion,
-	useInView,
-	useReducedMotion,
-} from 'motion/react';
+import { useInView, useReducedMotion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 
-import type { SocialProofImageItem, SocialProofItem } from './landing-types';
+import { SHARED_VIDEO_LAYOUT_ID } from '../constants/landing';
+import {
+	DOCKED_VIDEO_HEIGHT_PX,
+	DOCKED_VIDEO_WIDTH_PX,
+	SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_AMOUNT,
+	SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_MARGIN,
+} from '../constants/social-proof';
+import { isImageItem } from '../helpers/social-proof';
+import type { SocialProofItem } from '../types/landing';
+import { SocialProofDockedVideo } from './social-proof-docked-video';
+import { SocialProofFloatingItem } from './social-proof-floating-item';
+import { SocialProofHeadline } from './social-proof-headline';
 
 type SocialProofSectionProps = {
 	headline: string;
@@ -24,74 +30,45 @@ type SocialProofSectionProps = {
 	heroVideoObjectPosition?: string;
 };
 
-const DOCKED_VIDEO_WIDTH_PX = 188;
-const DOCKED_VIDEO_HEIGHT_PX = 168;
-
-function isImageItem(item: SocialProofItem): item is SocialProofImageItem {
-	return item.kind === 'image';
-}
-
-function SocialProofImageCard({ item }: { item: SocialProofImageItem }) {
-	return (
-		<div className='relative h-full w-full overflow-visible'>
-			<div className='relative h-full w-full overflow-hidden rounded-[0.9rem] shadow-[0_16px_34px_rgba(0,0,0,0.22)]'>
-				<Image
-					src={item.imageSrc}
-					alt={item.imageAlt}
-					fill
-					sizes='(min-width: 1280px) 220px, 180px'
-					className='object-cover'
-				/>
-			</div>
-		</div>
-	);
-}
-
 export function SocialProofSection({
 	headline,
 	items,
 	isVideoDocked = false,
 	onVideoDockChange,
-	sharedVideoLayoutId = 'hero-shared-video-frame',
+	sharedVideoLayoutId = SHARED_VIDEO_LAYOUT_ID,
 	heroVideoSrc,
 	heroVideoPosterSrc,
 	heroVideoObjectPosition = 'center 40%',
 }: SocialProofSectionProps) {
-	const shouldReduceMotion = useReducedMotion();
+	const isReducedMotion = useReducedMotion() ?? false;
 	const dockTargetRef = useRef<HTMLDivElement | null>(null);
-	const isDockTargetInView = useInView(dockTargetRef, {
-		amount: 0.45,
-		margin: '-8% 0px -22% 0px',
+	const isDockZoneInView = useInView(dockTargetRef, {
+		amount: SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_AMOUNT,
+		margin: SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_MARGIN,
 	});
 	const imageItems = items.filter(isImageItem);
 
 	useEffect(() => {
-		onVideoDockChange?.(isDockTargetInView);
-	}, [isDockTargetInView, onVideoDockChange]);
+		onVideoDockChange?.(isDockZoneInView);
+	}, [isDockZoneInView, onVideoDockChange]);
 
 	return (
 		<section
 			id='social-proof'
 			className='relative overflow-hidden pb-24 pt-10 text-foreground md:pb-30 md:pt-14'>
 			<div className='relative mx-auto max-w-[1320px] px-5 md:px-8 lg:px-10'>
-				<motion.h2
-					initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, amount: 0.45 }}
-					transition={{ duration: 0.64, ease: [0.22, 1, 0.36, 1] }}
-					className='mx-auto max-w-[14ch] text-center text-5xl font-light leading-[1.06] tracking-[-0.03em] md:hidden'>
-					{headline}
-				</motion.h2>
+				<SocialProofHeadline
+					headline={headline}
+					isReducedMotion={isReducedMotion}
+					className='mx-auto max-w-[14ch] text-center text-5xl font-light leading-[1.06] tracking-[-0.03em] md:hidden'
+				/>
 
 				<div className='relative mt-12 hidden h-[620px] md:block lg:h-[700px]'>
-					<motion.h2
-						initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.45 }}
-						transition={{ duration: 0.64, ease: [0.22, 1, 0.36, 1] }}
-						className='pointer-events-none absolute left-1/2 top-[50%] z-30 w-full max-w-[20ch] -translate-x-1/2 -translate-y-1/2 text-center text-5xl font-light leading-[1.06] tracking-[-0.03em]'>
-						{headline}
-					</motion.h2>
+					<SocialProofHeadline
+						headline={headline}
+						isReducedMotion={isReducedMotion}
+						className='pointer-events-none absolute left-1/2 top-[50%] z-30 w-full max-w-[20ch] -translate-x-1/2 -translate-y-1/2 text-center text-5xl font-light leading-[1.06] tracking-[-0.03em]'
+					/>
 
 					<div className='pointer-events-none absolute inset-0 z-10'>
 						<div
@@ -103,78 +80,23 @@ export function SocialProofSection({
 							}}
 						/>
 
-						<AnimatePresence
-							initial={false}
-							mode='sync'>
-							{isVideoDocked && heroVideoSrc ? (
-								<motion.div
-									key='section-two-shared-video'
-									layoutId={sharedVideoLayoutId}
-									layoutCrossfade={false}
-									initial={{ opacity: 1 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 1 }}
-									transition={{
-										layout: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
-									}}
-									className='absolute left-1/2 top-[90%] z-10 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-3xl'
-									style={{
-										width: `${DOCKED_VIDEO_WIDTH_PX}px`,
-										height: `${DOCKED_VIDEO_HEIGHT_PX}px`,
-									}}>
-									<video
-										className='h-full w-full object-cover'
-										style={{ objectPosition: heroVideoObjectPosition }}
-										autoPlay
-										loop
-										muted
-										playsInline
-										poster={heroVideoPosterSrc}
-										preload='metadata'>
-										<source
-											src={heroVideoSrc}
-											type='video/mp4'
-										/>
-									</video>
-								</motion.div>
-							) : null}
-						</AnimatePresence>
+						<SocialProofDockedVideo
+							isVideoDocked={isVideoDocked}
+							heroVideoSrc={heroVideoSrc}
+							heroVideoPosterSrc={heroVideoPosterSrc}
+							heroVideoObjectPosition={heroVideoObjectPosition}
+							sharedVideoLayoutId={sharedVideoLayoutId}
+						/>
 					</div>
 
 					<div className='absolute inset-0 z-20'>
 						{items.map((item, index) => (
-							<motion.article
+							<SocialProofFloatingItem
 								key={item.id}
-								initial={
-									shouldReduceMotion
-										? false
-										: { opacity: 0, scale: 0.92, y: 20 }
-								}
-								whileInView={{ opacity: 1, scale: 1, y: 0 }}
-								viewport={{ once: true, amount: 0.2 }}
-								animate={
-									shouldReduceMotion
-										? undefined
-										: {
-												y: [0, -8, 0],
-											}
-								}
-								transition={{
-									duration: shouldReduceMotion ? 0 : 0.8 + index * 0.25,
-									ease: 'easeInOut',
-									delay: index * 0.01,
-								}}
-								className='absolute overflow-visible'
-								style={{
-									left: item.left,
-									top: item.top,
-									width: `${item.width}px`,
-									height: `${item.height}px`,
-								}}>
-								{item.kind === 'logo' ? null : (
-									<SocialProofImageCard item={item} />
-								)}
-							</motion.article>
+								item={item}
+								index={index}
+								isReducedMotion={isReducedMotion}
+							/>
 						))}
 					</div>
 				</div>

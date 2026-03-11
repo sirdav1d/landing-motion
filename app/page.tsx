@@ -4,7 +4,7 @@ import {
 	heroContent,
 	socialProofHeadline,
 	socialProofItems,
-} from './_components/landing-content';
+} from './constants/landing-content';
 import { LandingExperience } from './_components/landing-experience';
 import { SiteHeader } from './_components/site-header';
 

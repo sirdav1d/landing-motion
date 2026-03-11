@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Inter, Manrope } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -20,6 +22,11 @@ export const metadata: Metadata = {
 	title: 'Atelier Lume',
 	description:
 		'Landing page editorial para a pré-venda de acessórios sob medida com energia jovem e entrega em casa.',
+	icons: {
+		icon: [{ url: '/favicon.ico' }],
+		shortcut: ['/favicon.ico'],
+		apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+	},
 };
 
 export default function RootLayout({
