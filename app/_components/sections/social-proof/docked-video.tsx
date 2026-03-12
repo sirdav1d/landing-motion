@@ -5,10 +5,10 @@ import {
 	DOCKED_VIDEO_HEIGHT_PX,
 	DOCKED_VIDEO_WIDTH_PX,
 	SOCIAL_PROOF_DOCKED_VIDEO_LAYOUT_TRANSITION,
-} from '../constants/social-proof';
-import { HeroVideo } from './hero-video';
+} from '../../../constants/social-proof';
+import { Video } from '../hero/video';
 
-type SocialProofDockedVideoProps = {
+type DockedVideoProps = {
 	isVideoDocked: boolean;
 	heroVideoSrc?: string;
 	heroVideoPosterSrc?: string;
@@ -16,13 +16,13 @@ type SocialProofDockedVideoProps = {
 	sharedVideoLayoutId: string;
 };
 
-export function SocialProofDockedVideo({
+export function DockedVideo({
 	isVideoDocked,
 	heroVideoSrc,
 	heroVideoPosterSrc,
 	heroVideoObjectPosition,
 	sharedVideoLayoutId,
-}: SocialProofDockedVideoProps) {
+}: DockedVideoProps) {
 	return (
 		<AnimatePresence
 			initial={false}
@@ -41,7 +41,7 @@ export function SocialProofDockedVideo({
 						width: `${DOCKED_VIDEO_WIDTH_PX}px`,
 						height: `${DOCKED_VIDEO_HEIGHT_PX}px`,
 					}}>
-					<HeroVideo
+					<Video
 						src={heroVideoSrc}
 						posterSrc={heroVideoPosterSrc}
 						objectPosition={heroVideoObjectPosition}

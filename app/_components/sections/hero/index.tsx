@@ -17,19 +17,19 @@ import {
 	HERO_MEDIA_Y_VALUES,
 	HERO_REVEAL_INITIAL_OFFSET_Y,
 	HERO_SCROLL_OFFSETS,
-} from '../constants/hero';
-import { SHARED_VIDEO_LAYOUT_ID } from '../constants/landing';
-import { useRotatingWord } from '../hooks/use-rotating-word';
-import type { HeroContent } from '../types/landing';
-import { HeroAnimatedLayout } from './hero-animated-layout';
-import { HeroReducedMotionLayout } from './hero-reduced-motion-layout';
+} from '../../../constants/hero';
+import { SHARED_VIDEO_LAYOUT_ID } from '../../../constants/landing';
+import { useRotatingWord } from '../../../hooks/use-rotating-word';
+import type { HeroContent } from '../../../types/landing';
+import { AnimatedLayout } from './animated-layout';
+import { ReducedMotionLayout } from './reduced-motion-layout';
 
-type HeroSectionProps = HeroContent & {
+type SectionProps = HeroContent & {
 	isVideoDocked?: boolean;
 	sharedVideoLayoutId?: string;
 };
 
-export function HeroSection({
+export function Section({
 	headlineStart,
 	headlineEnd,
 	rotatingWords,
@@ -40,7 +40,7 @@ export function HeroSection({
 	videoObjectPosition = 'center 40%',
 	isVideoDocked = false,
 	sharedVideoLayoutId = SHARED_VIDEO_LAYOUT_ID,
-}: HeroSectionProps) {
+}: SectionProps) {
 	const shouldReduceMotion = useReducedMotion() ?? false;
 	const sectionRef = useRef<HTMLElement | null>(null);
 	const activeWord = useRotatingWord(rotatingWords, shouldReduceMotion);
@@ -80,7 +80,7 @@ export function HeroSection({
 
 	if (shouldReduceMotion) {
 		return (
-			<HeroReducedMotionLayout
+			<ReducedMotionLayout
 				sectionRef={sectionRef}
 				headlineStart={headlineStart}
 				headlineEnd={headlineEnd}
@@ -96,7 +96,7 @@ export function HeroSection({
 	}
 
 	return (
-		<HeroAnimatedLayout
+		<AnimatedLayout
 			sectionRef={sectionRef}
 			isVideoDocked={isVideoDocked}
 			sharedVideoLayoutId={sharedVideoLayoutId}

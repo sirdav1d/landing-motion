@@ -1,11 +1,11 @@
 /** @format */
 
 import { type RefObject } from 'react';
-import type { CtaLink } from '../types/landing';
-import { HeroCopy } from './hero-copy';
-import { HeroVideo } from './hero-video';
+import type { CtaLink } from '../../../types/landing';
+import { Copy } from './copy';
+import { Video } from './video';
 
-type HeroReducedMotionLayoutProps = {
+type ReducedMotionLayoutProps = {
 	sectionRef: RefObject<HTMLElement | null>;
 	headlineStart: string;
 	headlineEnd: string;
@@ -18,7 +18,7 @@ type HeroReducedMotionLayoutProps = {
 	videoObjectPosition: string;
 };
 
-export function HeroReducedMotionLayout({
+export function ReducedMotionLayout({
 	sectionRef,
 	headlineStart,
 	headlineEnd,
@@ -29,7 +29,7 @@ export function HeroReducedMotionLayout({
 	bottomVideoSrc,
 	bottomPosterSrc,
 	videoObjectPosition,
-}: HeroReducedMotionLayoutProps) {
+}: ReducedMotionLayoutProps) {
 	return (
 		<section
 			id='hero'
@@ -37,7 +37,7 @@ export function HeroReducedMotionLayout({
 			className='relative overflow-hidden pb-14 pt-34 text-foreground md:pt-38'>
 			<div className='relative mx-auto max-w-[1320px] px-5 md:px-8 lg:px-10'>
 				<div className='max-w-[790px]'>
-					<HeroCopy
+					<Copy
 						headlineStart={headlineStart}
 						headlineEnd={headlineEnd}
 						activeWord={activeWord}
@@ -50,7 +50,7 @@ export function HeroReducedMotionLayout({
 
 				<div className='mt-12 overflow-hidden rounded-4xl'>
 					<div className='relative aspect-19/10 w-full'>
-						<HeroVideo
+						<Video
 							src={bottomVideoSrc}
 							posterSrc={bottomPosterSrc}
 							objectPosition={videoObjectPosition}

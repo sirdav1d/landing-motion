@@ -7,12 +7,12 @@ import {
 	HERO_COPY_TITLE_REVEAL_DELAY,
 	HERO_COPY_TITLE_REVEAL_DURATION,
 	HERO_SMOOTH_EASE,
-} from '../constants/hero';
-import type { CtaLink } from '../types/landing';
-import { HeroCtas } from './hero-ctas';
-import { HeroTitle } from './hero-title';
+} from '../../../constants/hero';
+import type { CtaLink } from '../../../types/landing';
+import { Ctas } from './ctas';
+import { Title } from './title';
 
-type HeroCopyProps = {
+type CopyProps = {
 	headlineStart: string;
 	headlineEnd: string;
 	activeWord: string;
@@ -22,7 +22,7 @@ type HeroCopyProps = {
 	revealInitial: false | { opacity: number; y: number };
 };
 
-export function HeroCopy({
+export function Copy({
 	headlineStart,
 	headlineEnd,
 	activeWord,
@@ -30,18 +30,18 @@ export function HeroCopy({
 	secondaryCta,
 	withMotion,
 	revealInitial,
-}: HeroCopyProps) {
+}: CopyProps) {
 	if (!withMotion) {
 		return (
 			<>
-				<HeroTitle
+				<Title
 					headlineStart={headlineStart}
 					headlineEnd={headlineEnd}
 					activeWord={activeWord}
 					animateWord={false}
 				/>
 
-				<HeroCtas
+				<Ctas
 					primaryCta={primaryCta}
 					secondaryCta={secondaryCta}
 				/>
@@ -59,7 +59,7 @@ export function HeroCopy({
 					duration: HERO_COPY_TITLE_REVEAL_DURATION,
 					ease: HERO_SMOOTH_EASE,
 				}}>
-				<HeroTitle
+				<Title
 					headlineStart={headlineStart}
 					headlineEnd={headlineEnd}
 					activeWord={activeWord}
@@ -75,7 +75,7 @@ export function HeroCopy({
 					duration: HERO_COPY_CTA_REVEAL_DURATION,
 					ease: HERO_SMOOTH_EASE,
 				}}>
-				<HeroCtas
+				<Ctas
 					primaryCta={primaryCta}
 					secondaryCta={secondaryCta}
 				/>

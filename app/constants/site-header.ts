@@ -1,10 +1,10 @@
 /** @format */
 
 export const navItems = [
-	{ label: 'Soluções', href: '#hero' },
-	{ label: 'Plataforma', href: '#hero' },
-	{ label: 'Preços', href: '#social-proof' },
-	{ label: 'Grandes marcas', href: '#social-proof' },
+	{ label: 'Soluções', href: '#solucoes' },
+	{ label: 'Plataforma', href: '#plataforma' },
+	{ label: 'Categorias', href: '#categorias' },
+	{ label: 'Pré-venda', href: '#pre-venda' },
 ] as const;
 
 export const HEADER_COMPACT_OFFSET_PX = 24;

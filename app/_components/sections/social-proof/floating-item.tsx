@@ -9,21 +9,21 @@ import {
 	SOCIAL_PROOF_ITEM_INITIAL_OFFSET_Y,
 	SOCIAL_PROOF_ITEM_INITIAL_SCALE,
 	SOCIAL_PROOF_ITEM_VIEWPORT_AMOUNT,
-} from '../constants/social-proof';
-import type { SocialProofItem } from '../types/landing';
-import { SocialProofImageCard } from './social-proof-image-card';
+} from '../../../constants/social-proof';
+import type { SocialProofItem } from '../../../types/landing';
+import { ImageCard } from './image-card';
 
-type SocialProofFloatingItemProps = {
+type FloatingItemProps = {
 	item: SocialProofItem;
 	index: number;
 	isReducedMotion: boolean;
 };
 
-export function SocialProofFloatingItem({
+export function FloatingItem({
 	item,
 	index,
 	isReducedMotion,
-}: SocialProofFloatingItemProps) {
+}: FloatingItemProps) {
 	return (
 		<motion.article
 			initial={
@@ -59,7 +59,7 @@ export function SocialProofFloatingItem({
 				width: `${item.width}px`,
 				height: `${item.height}px`,
 			}}>
-			{item.kind === 'logo' ? null : <SocialProofImageCard item={item} />}
+			{item.kind === 'logo' ? null : <ImageCard item={item} />}
 		</motion.article>
 	);
 }

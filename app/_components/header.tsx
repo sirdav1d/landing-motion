@@ -61,19 +61,19 @@ export function SiteHeader() {
 				className={[
 					'pointer-events-auto mx-auto flex items-center justify-between gap-4',
 					isCompact
-						? 'max-w-[980px] rounded-full border border-white/22 bg-[#10201fcc] px-5 py-2 shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl'
+						? 'max-w-[980px] rounded-full border border-border bg-card/90 px-5 py-2 shadow-2xl backdrop-blur-xl'
 						: 'max-w-[1260px] border border-transparent bg-transparent px-3 py-2',
 				].join(' ')}>
 				<a
 					href='#hero'
-					className='inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[#f1e8d5]'>
-					<span className='inline-block h-5 w-8 rounded-full border-2 border-[#f1e8d5]' />
+					className='inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-foreground'>
+					<span className='inline-block h-5 w-8 rounded-full border-2 border-foreground' />
 					atelier lume
 				</a>
 
 				<nav
 					aria-label='Navegação principal'
-					className='hidden items-center gap-8 text-base font-semibold text-[#f1e8d5]/82 lg:flex'>
+					className='hidden items-center gap-8 text-base font-semibold text-foreground/80 lg:flex'>
 					{navItems.map((item) => (
 						<a
 							key={item.label}
@@ -85,13 +85,8 @@ export function SiteHeader() {
 				</nav>
 
 				<a
-					href='#social-proof'
-					className={[
-						'inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition',
-						isCompact
-							? 'border border-[#f2dfb6] bg-[#f2dfb6] text-[#0b1617] hover:bg-[#fff2d3]'
-							: 'border border-white/44 bg-white text-[#0b1617] hover:bg-[#ece7da]',
-					].join(' ')}>
+					href='#pre-venda'
+					className='inline-flex items-center justify-center rounded-full border border-primary/20 bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-accent'>
 					Acessar meu painel
 				</a>
 			</motion.div>

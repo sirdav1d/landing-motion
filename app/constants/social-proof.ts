@@ -1,7 +1,7 @@
 /** @format */
 
-export const DOCKED_VIDEO_WIDTH_PX = 188;
-export const DOCKED_VIDEO_HEIGHT_PX = 168;
+export const DOCKED_VIDEO_WIDTH_PX = 200;
+export const DOCKED_VIDEO_HEIGHT_PX = 200;
 
 export const SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_AMOUNT = 0.45;
 export const SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_MARGIN = '-8% 0px -22% 0px';

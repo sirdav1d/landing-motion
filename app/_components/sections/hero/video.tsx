@@ -1,12 +1,12 @@
 /** @format */
 
-type HeroVideoProps = {
+type VideoProps = {
 	src: string;
 	posterSrc?: string;
 	objectPosition: string;
 };
 
-export function HeroVideo({ src, posterSrc, objectPosition }: HeroVideoProps) {
+export function Video({ src, posterSrc, objectPosition }: VideoProps) {
 	return (
 		<video
 			className='h-full w-full object-cover'

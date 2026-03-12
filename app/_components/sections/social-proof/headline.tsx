@@ -5,19 +5,19 @@ import {
 	SOCIAL_PROOF_HEADLINE_INITIAL_OFFSET_Y,
 	SOCIAL_PROOF_HEADLINE_TRANSITION,
 	SOCIAL_PROOF_HEADLINE_VIEWPORT_AMOUNT,
-} from '../constants/social-proof';
+} from '../../../constants/social-proof';
 
-type SocialProofHeadlineProps = {
+type HeadlineProps = {
 	headline: string;
 	className: string;
 	isReducedMotion: boolean;
 };
 
-export function SocialProofHeadline({
+export function Headline({
 	headline,
 	className,
 	isReducedMotion,
-}: SocialProofHeadlineProps) {
+}: HeadlineProps) {
 	return (
 		<motion.h2
 			initial={

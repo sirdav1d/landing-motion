@@ -6,12 +6,15 @@ import {
 	type MotionValue,
 } from 'motion/react';
 import type { RefObject } from 'react';
-import { HERO_SMOOTH_EASE, type HeroMediaClipValue } from '../constants/hero';
-import type { CtaLink } from '../types/landing';
-import { HeroCopy } from './hero-copy';
-import { HeroVideo } from './hero-video';
+import {
+	HERO_SMOOTH_EASE,
+	type HeroMediaClipValue,
+} from '../../../constants/hero';
+import type { CtaLink } from '../../../types/landing';
+import { Copy } from './copy';
+import { Video } from './video';
 
-type HeroAnimatedLayoutProps = {
+type AnimatedLayoutProps = {
 	sectionRef: RefObject<HTMLElement | null>;
 	isVideoDocked: boolean;
 	sharedVideoLayoutId: string;
@@ -31,14 +34,14 @@ type HeroAnimatedLayoutProps = {
 	videoObjectPosition: string;
 };
 
-type HeroAnimatedLayoutGenericProps<
+type AnimatedLayoutGenericProps<
 	TClipPath extends HeroMediaClipValue,
 	TMediaY extends number,
 	TMediaScale extends number,
 	TContentOpacity extends number,
 	TContentY extends number,
 > = Omit<
-	HeroAnimatedLayoutProps,
+	AnimatedLayoutProps,
 	'mediaClipPath' | 'mediaY' | 'mediaScale' | 'contentOpacity' | 'contentY'
 > & {
 	mediaClipPath: MotionValue<TClipPath>;
@@ -48,7 +51,7 @@ type HeroAnimatedLayoutGenericProps<
 	contentY: MotionValue<TContentY>;
 };
 
-export function HeroAnimatedLayout<
+export function AnimatedLayout<
 	TClipPath extends HeroMediaClipValue,
 	TMediaY extends number,
 	TMediaScale extends number,
@@ -72,7 +75,7 @@ export function HeroAnimatedLayout<
 	bottomVideoSrc,
 	bottomPosterSrc,
 	videoObjectPosition,
-}: HeroAnimatedLayoutGenericProps<
+}: AnimatedLayoutGenericProps<
 	TClipPath,
 	TMediaY,
 	TMediaScale,
@@ -104,7 +107,7 @@ export function HeroAnimatedLayout<
 									scale: mediaScale,
 								}}
 								className='hero-media-layer pointer-events-none absolute inset-0 z-10'>
-								<HeroVideo
+								<Video
 									src={bottomVideoSrc}
 									posterSrc={bottomPosterSrc}
 									objectPosition={videoObjectPosition}
@@ -117,7 +120,7 @@ export function HeroAnimatedLayout<
 						style={{ opacity: contentOpacity, y: contentY }}
 						className='hero-content-layer relative z-20 mx-auto flex h-full max-w-[1320px] px-5 md:px-8 lg:px-10'>
 						<div className='w-full max-w-[790px] pt-34 md:pt-38 lg:pt-42'>
-							<HeroCopy
+							<Copy
 								headlineStart={headlineStart}
 								headlineEnd={headlineEnd}
 								activeWord={activeWord}

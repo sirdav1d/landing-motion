@@ -1,20 +1,27 @@
 /** @format */
 
-import type { HeroContent, SocialProofItem } from '../types/landing';
+import type {
+	CategoriesContent,
+	HeroContent,
+	PlatformContent,
+	PreorderContent,
+	SocialProofItem,
+	SolutionsContent,
+} from '../types/landing';
 
 export const heroContent: HeroContent = {
 	headlineStart: 'Mais do que acessórios.',
 	headlineEnd: 'A base para seu estilo',
 	rotatingWords: ['fazer bonito.', 'se destacar.', 'acontecer.'],
 	description:
-		'Criamos peças com materiais acessíveis para universitários que querem estilo sem complicação.',
+		'Criamos peças com materiais acessíveis para universitárias que querem estilo sem complicação.',
 	primaryCta: {
 		label: 'Entrar na pré-venda',
-		href: '#social-proof',
+		href: '#pre-venda',
 	},
 	secondaryCta: {
-		label: 'Falar com Vendas',
-		href: '#social-proof',
+		label: 'Ver soluções',
+		href: '#solucoes',
 	},
 	backgroundVideoSrc:
 		'https://videos.pexels.com/video-files/9430543/9430543-uhd_2732_1440_25fps.mp4',
@@ -146,3 +153,130 @@ export const socialProofItems: SocialProofItem[] = [
 		secondaryImageAlt: 'Pulso com acessórios em luz de fim de tarde.',
 	},
 ];
+
+export const solutionsContent: SolutionsContent = {
+	eyebrow: 'Soluções',
+	title: 'Seu estilo acompanha cada momento do campus',
+	description:
+		'Uma curadoria pensada para rotina universitária, com combinações fáceis e acabamento sob medida.',
+	ctaLabel: 'Quero ver categorias',
+	ctaHref: '#categorias',
+	items: [
+		{
+			id: 'aula',
+			title: 'Aula com presença',
+			description:
+				'Peças leves e versáteis para usar o dia inteiro sem perder conforto.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&q=80&w=1600',
+			imageAlt:
+				'Jovem universitária com acessórios discretos em ambiente de estudo.',
+		},
+		{
+			id: 'estagio',
+			title: 'Estágio com identidade',
+			description:
+				'Visual elegante para reuniões e apresentações, mantendo sua autenticidade.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=1600',
+			imageAlt: 'Mulher com colar e brincos em retrato com luz suave.',
+		},
+		{
+			id: 'festa',
+			title: 'Festa com destaque',
+			description:
+				'Acabamentos brilhantes e composições expressivas para noites especiais.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&q=80&w=1600',
+			imageAlt:
+				'Close em acessórios metálicos com clima noturno e fundo escuro.',
+		},
+	],
+};
+
+export const platformContent: PlatformContent = {
+	eyebrow: 'Plataforma',
+	title: 'Como funciona na prática',
+	description:
+		'Processo direto para você montar seu kit e receber em casa sem fricção.',
+	steps: [
+		{
+			id: 'escolha',
+			title: 'Escolha seu estilo',
+			description:
+				'Selecione categorias, acabamento e referência visual em poucos cliques.',
+		},
+		{
+			id: 'sob-medida',
+			title: 'Ajuste sob medida',
+			description:
+				'Produzimos cada peça com foco em encaixe, conforto e durabilidade.',
+		},
+		{
+			id: 'entrega',
+			title: 'Receba em casa',
+			description:
+				'Entrega rastreada com prazo claro para você planejar o próximo look.',
+		},
+	],
+	ctaLabel: 'Entrar na pré-venda',
+	ctaHref: '#pre-venda',
+};
+
+export const categoriesContent: CategoriesContent = {
+	eyebrow: 'Categorias',
+	title: 'Quatro linhas para montar seu mix',
+	description:
+		'Explore as categorias principais e combine peças para criar composições autorais.',
+	items: [
+		{
+			id: 'brincos',
+			title: 'Brincos',
+			description: 'Do minimalista ao statement para variar seu visual.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&q=80&w=1400',
+			imageAlt: 'Close em brincos metálicos com iluminação quente.',
+			href: '#pre-venda',
+		},
+		{
+			id: 'colares',
+			title: 'Colares',
+			description: 'Camadas e pingentes para dar personalidade ao look.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&q=80&w=1400',
+			imageAlt: 'Colares em composição sobre fundo neutro.',
+			href: '#pre-venda',
+		},
+		{
+			id: 'pulseiras',
+			title: 'Pulseiras',
+			description: 'Texturas e combinações para uso diário ou ocasião especial.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1400',
+			imageAlt: 'Pulso com pulseiras em composição moderna.',
+			href: '#pre-venda',
+		},
+		{
+			id: 'aneis',
+			title: 'Anéis',
+			description: 'Modelagens ajustáveis para composições delicadas ou marcantes.',
+			imageSrc:
+				'https://images.unsplash.com/photo-1617038261545-a9f0d588f5e1?auto=format&fit=crop&q=80&w=1400',
+			imageAlt: 'Mãos com anéis metálicos em foco de detalhe.',
+			href: '#pre-venda',
+		},
+	],
+};
+
+export const preorderContent: PreorderContent = {
+	eyebrow: 'Pré-venda',
+	title: 'Entre na lista e receba acesso antecipado',
+	description:
+		'Cadastre um único contato para garantir prioridade quando os kits abrirem.',
+	inputLabel: 'Seu melhor contato',
+	inputPlaceholder: 'E-mail, WhatsApp ou Instagram',
+	submitLabel: 'Quero minha vaga',
+	successMessage: 'Contato recebido. Você já está na lista de pré-venda.',
+	privacyNote:
+		'Usaremos seu contato apenas para avisos sobre lançamento e disponibilidade.',
+};
