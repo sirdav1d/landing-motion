@@ -69,6 +69,9 @@ export type PlatformContent = {
 	eyebrow: string;
 	title: string;
 	description: string;
+	backgroundVideoSrc: string;
+	backgroundVideoPosterSrc?: string;
+	backgroundVideoObjectPosition?: string;
 	steps: PlatformStep[];
 	ctaLabel: string;
 	ctaHref: string;
@@ -88,6 +91,21 @@ export type CategoriesContent = {
 	title: string;
 	description: string;
 	items: ProductCategoryItem[];
+};
+
+export type FooterHighlightItem = {
+	id: string;
+	labelPrefix: string;
+	label: string;
+	meta: string;
+	href: string;
+};
+
+export type FooterContent = {
+	brandName: string;
+	highlightItems: FooterHighlightItem[];
+	socialLinks: CtaLink[];
+	creditLabel: string;
 };
 
 export type PreorderContent = {

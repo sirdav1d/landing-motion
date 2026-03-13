@@ -4,7 +4,11 @@
 
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useCallback, useEffect, useState } from 'react';
-import { HEADER_COMPACT_OFFSET_PX, navItems } from '../constants/site-header';
+import {
+	HEADER_COMPACT_OFFSET_PX,
+	HEADER_FOOTER_EXPAND_OFFSET_PX,
+	navItems,
+} from '../constants/site-header';
 
 function getCompactStartY() {
 	const socialProofSection = document.getElementById('social-proof');
@@ -20,15 +24,49 @@ function getCompactStartY() {
 	);
 }
 
+function getFooterExpandStartY() {
+	const footerSection = document.getElementById('pre-venda');
+	if (!footerSection) {
+		return Number.POSITIVE_INFINITY;
+	}
+
+	// Normalize subpixel layout values to avoid late state changes at section boundaries.
+	const footerStart = Math.floor(
+		footerSection.getBoundingClientRect().top + window.scrollY,
+	);
+	return Math.max(footerStart - HEADER_FOOTER_EXPAND_OFFSET_PX, 0);
+}
+
+function resolveCompactState(
+	scrollValue: number,
+	compactStartValue: number,
+	footerExpandStartValue: number,
+) {
+	return (
+		scrollValue >= compactStartValue && scrollValue < footerExpandStartValue
+	);
+}
+
 export function SiteHeader() {
 	const { scrollY } = useScroll();
 	const [compactStartY, setCompactStartY] = useState(Number.POSITIVE_INFINITY);
+	const [footerExpandStartY, setFooterExpandStartY] = useState(
+		Number.POSITIVE_INFINITY,
+	);
 	const [isCompact, setIsCompact] = useState(false);
 
 	const updateCompactStartY = useCallback(() => {
 		const nextCompactStartY = getCompactStartY();
+		const nextFooterExpandStartY = getFooterExpandStartY();
 		setCompactStartY(nextCompactStartY);
-		setIsCompact(window.scrollY >= nextCompactStartY);
+		setFooterExpandStartY(nextFooterExpandStartY);
+		setIsCompact(
+			resolveCompactState(
+				window.scrollY,
+				nextCompactStartY,
+				nextFooterExpandStartY,
+			),
+		);
 	}, []);
 
 	useEffect(() => {
@@ -47,7 +85,11 @@ export function SiteHeader() {
 	}, [updateCompactStartY]);
 
 	useMotionValueEvent(scrollY, 'change', (latestValue) => {
-		const nextIsCompact = latestValue >= compactStartY;
+		const nextIsCompact = resolveCompactState(
+			latestValue,
+			compactStartY,
+			footerExpandStartY,
+		);
 		setIsCompact((currentValue) =>
 			currentValue === nextIsCompact ? currentValue : nextIsCompact,
 		);

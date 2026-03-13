@@ -119,6 +119,51 @@ button {
 	will-change: transform, opacity;
 }
 
+.platform-title {
+	margin-top: 1rem;
+	max-width: 7.2ch;
+	text-wrap: balance;
+	font-size: 3.8rem;
+	font-weight: 300;
+	line-height: 0.9;
+	letter-spacing: -0.05em;
+	color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+	.platform-step-card {
+		position: absolute;
+		width: calc(45% - 0.5rem);
+	}
+
+	.platform-step-card--1 {
+		top: 0;
+		left: 0;
+	}
+
+	.platform-step-card--2 {
+		top: 40%;
+		left: 27.5%;
+	}
+
+	.platform-step-card--3 {
+		top: 80%;
+		left: 55%;
+	}
+}
+
+@media (min-width: 768px) {
+	.platform-title {
+		font-size: 5.8rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.platform-title {
+		font-size: 7.6rem;
+	}
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	html {
 		scroll-behavior: smooth;

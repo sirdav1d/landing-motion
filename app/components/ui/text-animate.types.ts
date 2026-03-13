@@ -42,6 +42,11 @@ export type ResolveVariantsInput = {
 	segmentCount: number;
 };
 
+export type SegmentClassNameResolver = (
+	segment: string,
+	index: number,
+) => string | undefined;
+
 export interface TextAnimateProps extends Omit<MotionProps, 'children'> {
 	/**
 	 * The text content to animate
@@ -54,7 +59,7 @@ export interface TextAnimateProps extends Omit<MotionProps, 'children'> {
 	/**
 	 * The class name to be applied to each segment
 	 */
-	segmentClassName?: string;
+	segmentClassName?: string | SegmentClassNameResolver;
 	/**
 	 * The delay before the animation starts
 	 */

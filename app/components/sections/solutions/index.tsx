@@ -16,7 +16,7 @@ export function Section({
 	return (
 		<section
 			id='solucoes'
-			className='relative border-t border-border/60 py-20 md:py-24'>
+			className='relative border-t border-border/60 pt-20 pb-14 md:pt-24 md:pb-16'>
 			<div className='mx-auto max-w-[1320px] px-5 md:px-8 lg:px-10'>
 				<div className='max-w-[840px]'>
 					<p className='text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground'>

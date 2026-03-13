@@ -2,6 +2,7 @@
 
 import type {
 	CategoriesContent,
+	FooterContent,
 	HeroContent,
 	PlatformContent,
 	PreorderContent,
@@ -199,6 +200,9 @@ export const platformContent: PlatformContent = {
 	title: 'Como funciona na prática',
 	description:
 		'Processo direto para você montar seu kit e receber em casa sem fricção.',
+	backgroundVideoSrc: '/videos/platform-video.mp4',
+	backgroundVideoPosterSrc: '/videos/platform-video-poster.jpg',
+	backgroundVideoObjectPosition: 'center 78%',
 	steps: [
 		{
 			id: 'escolha',
@@ -250,7 +254,8 @@ export const categoriesContent: CategoriesContent = {
 		{
 			id: 'pulseiras',
 			title: 'Pulseiras',
-			description: 'Texturas e combinações para uso diário ou ocasião especial.',
+			description:
+				'Texturas e combinações para uso diário ou ocasião especial.',
 			imageSrc:
 				'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=1400',
 			imageAlt: 'Pulso com pulseiras em composição moderna.',
@@ -259,23 +264,57 @@ export const categoriesContent: CategoriesContent = {
 		{
 			id: 'aneis',
 			title: 'Anéis',
-			description: 'Modelagens ajustáveis para composições delicadas ou marcantes.',
+			description:
+				'Modelagens ajustáveis para composições delicadas ou marcantes.',
 			imageSrc:
-				'https://images.unsplash.com/photo-1617038261545-a9f0d588f5e1?auto=format&fit=crop&q=80&w=1400',
-			imageAlt: 'Mãos com anéis metálicos em foco de detalhe.',
+				'https://images.unsplash.com/photo-1605102062083-ae61a51393f3?auto=format&fit=crop&q=80&w=1400',
+			imageAlt: 'Anel com pedra central sobre páginas de livro.',
 			href: '#pre-venda',
 		},
 	],
 };
 
+export const footerContent: FooterContent = {
+	brandName: 'atelier lume',
+	highlightItems: [
+		{
+			id: 'daily-kit',
+			labelPrefix: 'KIT',
+			label: 'Campus Daily',
+			meta: 'Disponivel na pre-venda',
+			href: '#categorias',
+		},
+		{
+			id: 'light-stack',
+			labelPrefix: 'KIT',
+			label: 'Light Stack',
+			meta: 'Disponivel na pre-venda',
+			href: '#categorias',
+		},
+		{
+			id: 'night-edit',
+			labelPrefix: 'KIT',
+			label: 'Night Edit',
+			meta: 'Lote 2026',
+			href: '#categorias',
+		},
+	],
+	socialLinks: [
+		{ label: 'Instagram', href: '#' },
+		{ label: 'TikTok', href: '#' },
+		{ label: 'YouTube', href: '#' },
+	],
+	creditLabel: 'Website by David Diniz Dos Santos',
+};
+
 export const preorderContent: PreorderContent = {
 	eyebrow: 'Pré-venda',
-	title: 'Entre na lista e receba acesso antecipado',
+	title: 'Receba acesso antecipado',
 	description:
 		'Cadastre um único contato para garantir prioridade quando os kits abrirem.',
 	inputLabel: 'Seu melhor contato',
 	inputPlaceholder: 'E-mail, WhatsApp ou Instagram',
-	submitLabel: 'Quero minha vaga',
+	submitLabel: 'Entrar na lista',
 	successMessage: 'Contato recebido. Você já está na lista de pré-venda.',
 	privacyNote:
 		'Usaremos seu contato apenas para avisos sobre lançamento e disponibilidade.',

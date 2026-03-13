@@ -4,17 +4,16 @@
 
 import { memo } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-
-import { cn } from '@/lib/utils';
+import { TextAnimateProps } from '@/app/components/ui/text-animate.types';
 import {
 	TEXT_ANIMATE_MOTION_ELEMENTS,
 	TEXT_ANIMATE_STAGGER_TIMINGS,
-} from './text-animate.constants';
+} from '@/app/components/ui/text-animate.constants';
 import {
 	resolveTextAnimateVariants,
 	splitTextByAnimationType,
-} from './text-animate.helpers';
-import type { TextAnimateProps } from './text-animate.types';
+} from '@/app/components/ui/text-animate.helpers';
+import { cn } from '@/lib/utils';
 
 export const TextAnimate = memo(function TextAnimate({
 	children,
