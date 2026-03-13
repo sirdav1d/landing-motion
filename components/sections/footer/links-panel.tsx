@@ -1,10 +1,7 @@
 /** @format */
 
 import { Instagram, Music2, Youtube } from 'lucide-react';
-import type {
-	CtaLink,
-	FooterHighlightItem,
-} from '../../../types/landing';
+import type { CtaLink, FooterHighlightItem } from '../../../types/landing';
 
 type LinksPanelProps = {
 	highlightItems: FooterHighlightItem[];
@@ -39,10 +36,7 @@ function getSocialIcon(label: string) {
 	);
 }
 
-export function LinksPanel({
-	highlightItems,
-	socialLinks,
-}: LinksPanelProps) {
+export function LinksPanel({ highlightItems, socialLinks }: LinksPanelProps) {
 	return (
 		<section
 			aria-label='Navegacao do rodape'
@@ -55,7 +49,9 @@ export function LinksPanel({
 						<a
 							href={item.href}
 							className='grid cursor-pointer grid-cols-[56px_minmax(0,1fr)] items-center gap-x-3 gap-y-1 py-3 md:grid-cols-[72px_minmax(0,1fr)_auto] md:gap-x-4 md:py-4'>
-							<span className='text-base text-foreground/72'>{item.labelPrefix}</span>
+							<span className='text-base text-foreground/72'>
+								{item.labelPrefix}
+							</span>
 							<span className='text-[clamp(2.05rem,3.8vw,3.25rem)] font-medium leading-[1.04] tracking-[-0.02em] text-foreground'>
 								{item.label}
 							</span>

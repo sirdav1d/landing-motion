@@ -1,7 +1,7 @@
 /** @format */
 
 import Image from 'next/image';
-import { getVisibleCategories } from '../../../helpers/categories';
+import { getVisibleCategories } from '../../../app/helpers/categories';
 import type { CategoriesContent } from '../../../types/landing';
 
 type SectionProps = CategoriesContent;
@@ -45,7 +45,9 @@ export function Section({ eyebrow, title, description, items }: SectionProps) {
 								<h3 className='text-2xl font-semibold tracking-tight text-foreground'>
 									{item.title}
 								</h3>
-								<p className='mt-3 text-base text-foreground/80'>{item.description}</p>
+								<p className='mt-3 text-base text-foreground/80'>
+									{item.description}
+								</p>
 								<a
 									href={item.href}
 									className='mt-5 inline-flex items-center text-sm font-semibold text-primary hover:text-accent-foreground'>

@@ -1,6 +1,6 @@
 /** @format */
 
-import { TextAnimate } from '@/app/components/ui/text-animate';
+import { TextAnimate } from '@/components/ui/text-animate';
 import { cn } from '@/lib/utils';
 import { PLATFORM_ANIMATION_VIEWPORT_AMOUNT } from './constants';
 

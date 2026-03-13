@@ -2,8 +2,7 @@
 
 'use client';
 
-import { startTransition, useState } from 'react';
-import type { FormEvent } from 'react';
+import { FormEvent, startTransition, useState } from 'react';
 import type { PreorderContent } from '../../../types/landing';
 
 type SectionProps = PreorderContent;
@@ -47,7 +46,7 @@ export function Section({
 			id='pre-venda'
 			className='relative border-t border-border/60 py-20 md:py-24'>
 			<div className='mx-auto max-w-[1320px] px-5 md:px-8 lg:px-10'>
-				<div className='mx-auto max-w-[900px] rounded-[2rem] border border-border bg-card/60 p-7 md:p-10'>
+				<div className='mx-auto max-w-[900px] rounded-4xl border border-border bg-card/60 p-7 md:p-10'>
 					<p className='text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground'>
 						{eyebrow}
 					</p>
@@ -63,7 +62,9 @@ export function Section({
 							<p className='text-base font-semibold text-foreground'>
 								{successMessage}
 							</p>
-							<p className='mt-2 text-sm text-foreground/80'>{submittedContact}</p>
+							<p className='mt-2 text-sm text-foreground/80'>
+								{submittedContact}
+							</p>
 							<button
 								type='button'
 								onClick={handleReset}

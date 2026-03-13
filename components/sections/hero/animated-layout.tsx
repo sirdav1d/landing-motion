@@ -1,10 +1,6 @@
 /** @format */
 
-import {
-	AnimatePresence,
-	motion,
-	type MotionValue,
-} from 'motion/react';
+import { AnimatePresence, motion, type MotionValue } from 'motion/react';
 import type { RefObject } from 'react';
 import {
 	HERO_SMOOTH_EASE,

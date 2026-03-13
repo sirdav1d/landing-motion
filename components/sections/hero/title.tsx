@@ -1,6 +1,6 @@
 /** @format */
 
-import { TextAnimate } from '@/app/components/ui/text-animate';
+import { TextAnimate } from '@/components/ui/text-animate';
 
 type TitleProps = {
 	headlineStart: string;

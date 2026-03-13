@@ -16,52 +16,12 @@ import {
 
 type StepsFlowProps = {
 	steps: PlatformStep[];
-	connectorsAnimationStartDelay: number;
 	isVideoRevealed: boolean;
 };
 
-export function StepsFlow({
-	steps,
-	connectorsAnimationStartDelay,
-	isVideoRevealed,
-}: StepsFlowProps) {
+export function StepsFlow({ steps, isVideoRevealed }: StepsFlowProps) {
 	return (
 		<div className='relative mt-10 md:h-80 lg:h-90 '>
-			<div
-				aria-hidden='true'
-				className='pointer-events-none absolute inset-0 hidden md:block'>
-				<motion.span
-					initial={{ scaleX: 0, scaleY: 0, opacity: 0 }}
-					whileInView={
-						isVideoRevealed
-							? { scaleX: 1, scaleY: 1, opacity: 1 }
-							: { scaleX: 0, scaleY: 0, opacity: 0 }
-					}
-					transition={{
-						duration: 0.72,
-						ease: CARD_ANIMATION_EASE,
-						delay: connectorsAnimationStartDelay,
-					}}
-					viewport={{ once: true, amount: PLATFORM_ANIMATION_VIEWPORT_AMOUNT }}
-					className='absolute top-[28%] left-[14%] h-20 w-[14%] origin-top-left border-l border-b border-dashed border-border/70'
-				/>
-				<motion.span
-					initial={{ scaleX: 0, scaleY: 0, opacity: 0 }}
-					whileInView={
-						isVideoRevealed
-							? { scaleX: 1, scaleY: 1, opacity: 1 }
-							: { scaleX: 0, scaleY: 0, opacity: 0 }
-					}
-					transition={{
-						duration: 0.72,
-						ease: CARD_ANIMATION_EASE,
-						delay: connectorsAnimationStartDelay + 0.2,
-					}}
-					viewport={{ once: true, amount: PLATFORM_ANIMATION_VIEWPORT_AMOUNT }}
-					className='absolute top-[69%] left-[59%] h-20 w-[15%] origin-top-right border-r border-t border-dashed border-border/70'
-				/>
-			</div>
-
 			<ol className='relative space-y-2 md:h-full md:space-y-0 '>
 				{steps.map((step, index) => (
 					<motion.li
@@ -88,7 +48,10 @@ export function StepsFlow({
 								},
 							},
 						}}
-						viewport={{ once: true, amount: PLATFORM_ANIMATION_VIEWPORT_AMOUNT }}
+						viewport={{
+							once: true,
+							amount: PLATFORM_ANIMATION_VIEWPORT_AMOUNT,
+						}}
 						className={cn(
 							'relative platform-step-card',
 							`platform-step-card--${index + 1}`,

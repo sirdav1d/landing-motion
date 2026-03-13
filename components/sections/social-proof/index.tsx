@@ -13,7 +13,7 @@ import {
 	SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_AMOUNT,
 	SOCIAL_PROOF_DOCK_TARGET_IN_VIEW_MARGIN,
 } from '../../../constants/social-proof';
-import { isImageItem } from '../../../helpers/social-proof';
+import { isImageItem } from '../../../app/helpers/social-proof';
 import type { SocialProofItem } from '../../../types/landing';
 import { DockedVideo } from './docked-video';
 import { FloatingItem } from './floating-item';

@@ -24,11 +24,11 @@ export function Section({ preorderContent, footerContent }: SectionProps) {
 			/>
 			<div
 				aria-hidden='true'
-				className='pointer-events-none absolute bottom-0 left-1/2 h-28 w-[70%] -translate-x-1/2 rounded-full bg-primary/12 opacity-20 blur-3xl'
+				className='pointer-events-none absolute bottom-0 left-1/2 h-28 w-[70%] -translate-x-1/2 rounded-full bg-primary/5 opacity-10 blur-3xl'
 			/>
 			<div
 				aria-hidden='true'
-				className='pointer-events-none absolute inset-x-0 top-20 flex justify-center opacity-50 md:top-24 lg:top-24'>
+				className='pointer-events-none absolute inset-x-0 top-20 flex justify-center opacity-10 md:top-24 lg:top-32'>
 				<span className='inline-block h-24 w-40 rounded-full border-10 border-foreground sm:h-28 sm:w-44 md:h-36 md:w-56 lg:h-42 lg:w-68' />
 			</div>
 			<div className='mx-auto flex min-h-[calc(100vh-5rem)] max-w-[1320px] flex-col justify-end gap-10 px-5 md:min-h-[calc(100vh-7rem)] md:px-8 lg:px-10'>

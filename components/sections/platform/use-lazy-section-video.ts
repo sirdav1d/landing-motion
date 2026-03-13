@@ -1,7 +1,10 @@
 /** @format */
 
 import { type RefObject, useEffect, useState } from 'react';
-import { VIDEO_POSTER_HOLD_MS } from './constants';
+import {
+	PLATFORM_ANIMATION_VIEWPORT_AMOUNT,
+	VIDEO_POSTER_HOLD_MS,
+} from './constants';
 
 export function useLazySectionVideo(
 	sectionRef: RefObject<HTMLElement | null>,
@@ -9,6 +12,8 @@ export function useLazySectionVideo(
 ) {
 	const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 	const [isVideoReady, setIsVideoReady] = useState(false);
+	const [hasReachedRevealViewport, setHasReachedRevealViewport] =
+		useState(false);
 	const [isVideoRevealed, setIsVideoRevealed] = useState(false);
 
 	useEffect(() => {
@@ -30,6 +35,30 @@ export function useLazySectionVideo(
 	}, [sectionRef]);
 
 	useEffect(() => {
+		const sectionNode = sectionRef.current;
+		if (!sectionNode || hasReachedRevealViewport) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				const hasReachedThreshold = entries.some(
+					(entry) =>
+						entry.isIntersecting &&
+						entry.intersectionRatio >= PLATFORM_ANIMATION_VIEWPORT_AMOUNT,
+				);
+
+				if (hasReachedThreshold) {
+					setHasReachedRevealViewport(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: [PLATFORM_ANIMATION_VIEWPORT_AMOUNT] },
+		);
+
+		observer.observe(sectionNode);
+		return () => observer.disconnect();
+	}, [hasReachedRevealViewport, sectionRef]);
+
+	useEffect(() => {
 		if (!shouldLoadVideo || !isVideoReady) return;
 		const videoNode = videoRef.current;
 		if (!videoNode) return;
@@ -37,14 +66,14 @@ export function useLazySectionVideo(
 	}, [isVideoReady, shouldLoadVideo, videoRef]);
 
 	useEffect(() => {
-		if (!isVideoReady) return;
+		if (!isVideoReady || !hasReachedRevealViewport) return;
 
 		const revealTimer = window.setTimeout(() => {
 			setIsVideoRevealed(true);
 		}, VIDEO_POSTER_HOLD_MS);
 
 		return () => window.clearTimeout(revealTimer);
-	}, [isVideoReady]);
+	}, [hasReachedRevealViewport, isVideoReady]);
 
 	return {
 		isVideoRevealed: isVideoReady && isVideoRevealed,

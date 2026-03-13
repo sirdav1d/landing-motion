@@ -5,7 +5,6 @@
 import { useRef } from 'react';
 import type { PlatformContent } from '../../../types/landing';
 import { BackgroundVideoLayer } from './background-video-layer';
-import { resolveConnectorsAnimationStartDelay } from './constants';
 import { StepsFlow } from './steps-flow';
 import { Title } from './title';
 import { useLazySectionVideo } from './use-lazy-section-video';
@@ -25,9 +24,6 @@ export function Section({
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const { isVideoRevealed, setIsVideoReady, shouldLoadVideo } =
 		useLazySectionVideo(sectionRef, videoRef);
-	const connectorsAnimationStartDelay = resolveConnectorsAnimationStartDelay(
-		steps.length,
-	);
 
 	return (
 		<section
@@ -54,7 +50,6 @@ export function Section({
 
 				<StepsFlow
 					steps={steps}
-					connectorsAnimationStartDelay={connectorsAnimationStartDelay}
 					isVideoRevealed={isVideoRevealed}
 				/>
 			</div>

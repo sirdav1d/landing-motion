@@ -9,9 +9,9 @@ import {
 	socialProofHeadline,
 	socialProofItems,
 	solutionsContent,
-} from './constants/landing-content';
-import { LandingExperience } from './components/landing-experience';
-import { SiteHeader } from './components/header';
+} from '../constants/landing-content';
+import { LandingExperience } from '../components/landing-experience';
+import { SiteHeader } from '../components/header';
 
 export default function Home() {
 	return (

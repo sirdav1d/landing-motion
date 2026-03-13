@@ -49,7 +49,9 @@ export function Section({
 								<h3 className='text-2xl font-semibold tracking-tight text-foreground'>
 									{item.title}
 								</h3>
-								<p className='mt-3 text-base text-foreground/80'>{item.description}</p>
+								<p className='mt-3 text-base text-foreground/80'>
+									{item.description}
+								</p>
 							</div>
 						</article>
 					))}
